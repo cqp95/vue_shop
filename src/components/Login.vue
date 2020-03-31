@@ -12,7 +12,8 @@
         label-width="0px"
         class="login_form"
         :rules="loginFormRules"
-      >
+        @submit.native.prevent
+      ><!--@submit.native.prevent阻止默认提交-->
         <!-- 用户名 -->
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user"></el-input>
@@ -27,7 +28,8 @@
         </el-form-item>
         <!-- 按钮区域 -->
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">登录</el-button>
+          <el-button type="primary" @click="login" native-type="submit">登录</el-button>
+          <!-- native-type="submit"回车提交事件 -->
           <el-button type="info" @click="resetLoginForm">重置</el-button>
         </el-form-item>
       </el-form>
@@ -67,11 +69,12 @@ export default {
     },
     login() {
       this.$refs.loginFormRef.validate(async valid => {
-        console.log(valid) //valid表示预验证是否成功
-        if (!valid) return
+        // console.log(valid) //valid表示预验证是否成功
+        if (!valid) return;
         const { data: result } = await this.$http.post('login', this.loginForm)
         if (result.meta.status !== 200) return this.$message.error('登录失败！')
         this.$message.success('登录成功!')
+        // console.log(result)
         //1.将登录成功之后的token，保存到客户端的sessionStorage中
         // 1.1 项目中出了登录之外的其他api接口，必须在登录之后才能访问
         // 1.2 token 只应在当前网站打开期间生效，所以将token保存在sessionStorage中

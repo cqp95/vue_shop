@@ -3,7 +3,7 @@ import Vue from 'vue'
 // import { Form,FormItem } from 'element-ui'
 // import { Input } from 'element-ui'//导入
 // import { Message } from 'element-ui' //导入弹框提示组件
-import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn,Switch,Tooltip,Pagination,Dialog,MessageBox,Tag,Tree,Select,Option } from 'element-ui' //导入弹框提示组件
+import { Button, Form, FormItem, Input, Message, Container, Header, Aside, Main, Menu, Submenu, MenuItem, Breadcrumb, BreadcrumbItem, Card, Row, Col, Table, TableColumn,Switch,Tooltip,Pagination,Dialog,MessageBox,Tag,Tree,Select,Option,Cascader } from 'element-ui' //导入弹框提示组件
 
 Vue.use(Button)//全局
 Vue.use(Form)
@@ -31,6 +31,7 @@ Vue.use(Tag)
 Vue.use(Tree)
 Vue.use(Select)
 Vue.use(Option)
+Vue.use(Cascader)
 Vue.prototype.$message = Message//需要进行全局挂载
 Vue.prototype.$confirm = MessageBox.confirm//原型挂载
 
